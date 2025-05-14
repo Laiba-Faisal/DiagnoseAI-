@@ -1,0 +1,94 @@
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Diagnosis Result</title>-->
+<!--     <style>-->
+<!--        body {-->
+<!--            background-image: url('https://bicontent.businessinsurance.com/9fc224cb-6018-44d2-990d-4c510541d47c.jpg');-->
+<!--            background-size: cover;-->
+<!--            background-position: center;-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-attachment: fixed;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+<!--        </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Diagnosis Result</h1>-->
+<!--    <p>The predicted prognosis is: <strong>{{ prediction }}</strong></p>-->
+<!--    <a href="/">Go back</a>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis Result</title>
+    <style>
+        body {
+            background-image: url('https://bicontent.businessinsurance.com/9fc224cb-6018-44d2-990d-4c510541d47c.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            text-shadow: 2px 2px 4px #000;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #ff4d4d;
+            background-color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a:hover {
+            background-color: #ff4d4d;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diagnosis Result</h1>
+        <p>The predicted prognosis is: <strong>{{ prediction }}</strong></p>
+        <a href="/">Go back</a>
+    </div>
+</body>
+</html>

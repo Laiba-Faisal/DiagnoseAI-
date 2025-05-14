@@ -1,0 +1,998 @@
+<!--&lt;!&ndash;<!doctype html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1.0">&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Medical Diagnosis</title>&ndash;&gt;-->
+<!--&lt;!&ndash;    <style>&ndash;&gt;-->
+<!--&lt;!&ndash;   body {&ndash;&gt;-->
+<!--&lt;!&ndash;              background-image: url('https://i.postimg.cc/dQ78wxwV/13437805-163800857.jpg');&ndash;&gt;-->
+<!--&lt;!&ndash;    background-size: cover;&ndash;&gt;-->
+<!--&lt;!&ndash;    background-position: center;&ndash;&gt;-->
+<!--&lt;!&ndash;    background-repeat: no-repeat;&ndash;&gt;-->
+<!--&lt;!&ndash;    background-attachment: fixed;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin: 0; /* Remove default margin */&ndash;&gt;-->
+<!--&lt;!&ndash;    padding: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;             }&ndash;&gt;-->
+<!--&lt;!&ndash; button[type="submit"].submit-button {&ndash;&gt;-->
+<!--&lt;!&ndash;    font-size: 1em; /* Adjust font size */&ndash;&gt;-->
+<!--&lt;!&ndash;    color: #15e38a;&ndash;&gt;-->
+<!--&lt;!&ndash;    background-color: transparent;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding: 10px 20px; /* Adjust padding */&ndash;&gt;-->
+<!--&lt;!&ndash;    border: none;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius: 10px; /* Adjust border radius */&ndash;&gt;-->
+<!--&lt;!&ndash;    cursor: pointer;&ndash;&gt;-->
+<!--&lt;!&ndash;    transition: color 0.3s ease, transform 0.2s ease;&ndash;&gt;-->
+<!--&lt;!&ndash;    position: relative;&ndash;&gt;-->
+<!--&lt;!&ndash;    overflow: hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;    /* Add box-shadow for glow effect */&ndash;&gt;-->
+<!--&lt;!&ndash;    box-shadow: 0 0 10px #15e38a; /* Adjust glow intensity */&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;button[type="submit"].submit-button::before {&ndash;&gt;-->
+<!--&lt;!&ndash;    content: "";&ndash;&gt;-->
+<!--&lt;!&ndash;    position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;    top: -2px; /* Adjust this value to control the glow size */&ndash;&gt;-->
+<!--&lt;!&ndash;    left: -2px; /* Adjust this value to control the glow size */&ndash;&gt;-->
+<!--&lt;!&ndash;    width: calc(100% + 4px); /* Adjust this value to control the glow size */&ndash;&gt;-->
+<!--&lt;!&ndash;    height: calc(100% + 4px); /* Adjust this value to control the glow size */&ndash;&gt;-->
+<!--&lt;!&ndash;    background: linear-gradient(45deg, #0fbf6b, #15e38a, #0fbf6b);&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius: 10px; /* Adjust border radius */&ndash;&gt;-->
+<!--&lt;!&ndash;    opacity: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;    transition: opacity 0.5s, transform 0.5s;&ndash;&gt;-->
+<!--&lt;!&ndash;    z-index: -1;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;button[type="submit"].submit-button:hover::before {&ndash;&gt;-->
+<!--&lt;!&ndash;    opacity: 1;&ndash;&gt;-->
+<!--&lt;!&ndash;    transform: scale(1.05);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;button[type="submit"].submit-button:hover {&ndash;&gt;-->
+<!--&lt;!&ndash;    color: #fff; /* Change text color on hover */&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;button[type="submit"].submit-button:focus {&ndash;&gt;-->
+<!--&lt;!&ndash;    outline: none;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;button[type="submit"].submit-button:active {&ndash;&gt;-->
+<!--&lt;!&ndash;    transform: scale(0.95);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .checkbox-wrapper-56 *,&ndash;&gt;-->
+<!--&lt;!&ndash;        .checkbox-wrapper-56 ::after,&ndash;&gt;-->
+<!--&lt;!&ndash;        .checkbox-wrapper-56 ::before {&ndash;&gt;-->
+<!--&lt;!&ndash;            box-sizing: border-box;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .checkbox-wrapper-56 .container input {&ndash;&gt;-->
+<!--&lt;!&ndash;            opacity: 1;&ndash;&gt;-->
+<!--&lt;!&ndash;            -webkit-appearance: none;&ndash;&gt;-->
+<!--&lt;!&ndash;            cursor: pointer;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 50px;&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 50px;&ndash;&gt;-->
+<!--&lt;!&ndash;            box-shadow: -10px -10px 15px rgba(255,255,255,0.5),&ndash;&gt;-->
+<!--&lt;!&ndash;            10px 10px 15px rgba(0,0,70,0.12);&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 50%;&ndash;&gt;-->
+<!--&lt;!&ndash;            border: 8px solid #ececec;&ndash;&gt;-->
+<!--&lt;!&ndash;            outline: none;&ndash;&gt;-->
+<!--&lt;!&ndash;            display: flex;&ndash;&gt;-->
+<!--&lt;!&ndash;            justify-content: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            align-items: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            transition: .5s;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .checkbox-wrapper-56 .container {&ndash;&gt;-->
+<!--&lt;!&ndash;            display: flex;&ndash;&gt;-->
+<!--&lt;!&ndash;            justify-content: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            align-items: center;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .checkbox-wrapper-56 .container input::after {&ndash;&gt;-->
+<!--&lt;!&ndash;            transition: .5s;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-family: monospace;&ndash;&gt;-->
+<!--&lt;!&ndash;            content: '';&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #7a7a7a;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-size: 25px;&ndash;&gt;-->
+<!--&lt;!&ndash;            left: 0.45em;&ndash;&gt;-->
+<!--&lt;!&ndash;            top: 0.25em;&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 0.25em;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 0.5em;&ndash;&gt;-->
+<!--&lt;!&ndash;            border: solid #7a7a7a;&ndash;&gt;-->
+<!--&lt;!&ndash;            border-width: 0 0.15em 0.15em 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            transform: rotate(45deg);&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .checkbox-wrapper-56 .container input:checked {&ndash;&gt;-->
+<!--&lt;!&ndash;            box-shadow: -10px -10px 15px rgba(255,255,255,0.5),&ndash;&gt;-->
+<!--&lt;!&ndash;            10px 10px 15px rgba(70,70,70,0.12),&ndash;&gt;-->
+<!--&lt;!&ndash;            inset -10px -10px 15px rgba(255,255,255,0.5),&ndash;&gt;-->
+<!--&lt;!&ndash;            inset 10px 10px 15px rgba(70,70,70,0.12);&ndash;&gt;-->
+<!--&lt;!&ndash;            transition: .5s;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .checkbox-wrapper-56 .container input:checked::after {&ndash;&gt;-->
+<!--&lt;!&ndash;            transition: .5s;&ndash;&gt;-->
+<!--&lt;!&ndash;            border: solid #15e38a;&ndash;&gt;-->
+<!--&lt;!&ndash;            border-width: 0 0.15em 0.15em 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            transform: rotate(45deg);&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;    <h1>Select Your Symptoms</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;    <form action="/predict" method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;        {% for symptom in symptoms %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="checkbox-wrapper-56">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label class="container">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="checkbox" id="{{ symptom }}" name="{{ symptom }}" value="1">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="checkmark"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="{{ symptom }}">{{ symptom.replace('_', ' ') }}</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;        <br>&ndash;&gt;-->
+<!--&lt;!&ndash;        <button type="submit" class="submit-button">Submit</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Medical Diagnosis</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            background-image: url('https://i.postimg.cc/dQ78wxwV/13437805-163800857.jpg');-->
+<!--            background-size: cover;-->
+<!--            background-position: center;-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-attachment: fixed;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button {-->
+<!--            font-size: 1em;-->
+<!--            color: #ff4d4d;-->
+<!--            background-color: transparent;-->
+<!--            padding: 10px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 10px;-->
+<!--            cursor: pointer;-->
+<!--            transition: color 0.3s ease, transform 0.2s ease;-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--            box-shadow: 0 0 10px #ff4d4d;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button::before {-->
+<!--            content: "";-->
+<!--            position: absolute;-->
+<!--            top: -2px;-->
+<!--            left: -2px;-->
+<!--            width: calc(100% + 4px);-->
+<!--            height: calc(100% + 4px);-->
+<!--            background: linear-gradient(45deg, #ff4d4d, #ff0000, #ff4d4d);-->
+<!--            border-radius: 10px;-->
+<!--            opacity: 0;-->
+<!--            transition: opacity 0.5s, transform 0.5s;-->
+<!--            z-index: -1;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button:hover::before {-->
+<!--            opacity: 1;-->
+<!--            transform: scale(1.05);-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button:hover {-->
+<!--            color: #fff;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button:focus {-->
+<!--            outline: none;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button:active {-->
+<!--            transform: scale(0.95);-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 *,-->
+<!--        .checkbox-wrapper-56 ::after,-->
+<!--        .checkbox-wrapper-56 ::before {-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container input {-->
+<!--            opacity: 1;-->
+<!--            -webkit-appearance: none;-->
+<!--            cursor: pointer;-->
+<!--            height: 30px;-->
+<!--            width: 30px;-->
+<!--            box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),-->
+<!--            10px 10px 15px rgba(0, 0, 70, 0.12);-->
+<!--            border-radius: 50%;-->
+<!--            border: 8px solid #ececec;-->
+<!--            outline: none;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            transition: .5s;-->
+<!--            margin-right: 10px;-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container input::after {-->
+<!--            transition: .5s;-->
+<!--            font-family: monospace;-->
+<!--            content: '';-->
+<!--            color: #7a7a7a;-->
+<!--            font-size: 20px;-->
+<!--            left: 0.45em;-->
+<!--            top: 0.25em;-->
+<!--            width: 0.25em;-->
+<!--            height: 0.5em;-->
+<!--            border: solid #7a7a7a;-->
+<!--            border-width: 0 0.15em 0.15em 0;-->
+<!--            transform: rotate(45deg);-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container input:checked {-->
+<!--            box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),-->
+<!--            10px 10px 15px rgba(70, 70, 70, 0.12),-->
+<!--            inset -10px -10px 15px rgba(255, 255, 255, 0.5),-->
+<!--            inset 10px 10px 15px rgba(70, 70, 70, 0.12);-->
+<!--            transition: .5s;-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container input:checked::after {-->
+<!--            transition: .5s;-->
+<!--            border: solid #FF0000;-->
+<!--            border-width: 0 0.15em 0.15em 0;-->
+<!--            transform: rotate(45deg);-->
+<!--        }-->
+
+<!--        /* Dropdown menu styles */-->
+<!--        .dropdown {-->
+<!--            position: relative;-->
+<!--            display: inline-block;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        .dropdown-content {-->
+<!--            display: none;-->
+<!--            position: absolute;-->
+<!--            background-color: #f9f9f9;-->
+<!--            min-width: 300px;-->
+<!--            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);-->
+<!--            z-index: 1;-->
+<!--            padding: 12px 16px;-->
+<!--        }-->
+
+<!--        .dropdown:hover .dropdown-content {-->
+<!--            display: block;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Select Your Symptoms</h1>-->
+<!--    <form action="/predict" method="post">-->
+<!--        <div class="dropdown">-->
+<!--            <button class="submit-button" type="button">Select Symptoms</button>-->
+<!--            <div class="dropdown-content">-->
+<!--                {% for symptom in symptoms %}-->
+<!--                    <div class="checkbox-wrapper-56">-->
+<!--                        <label class="container">-->
+<!--                            <input type="checkbox" id="{{ symptom }}" name="{{ symptom }}" value="1">-->
+<!--                            <span>{{ symptom.replace('_', ' ') }}</span>-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                {% endfor %}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <br>-->
+<!--        <button type="submit" class="submit-button">Submit</button>-->
+<!--    </form>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Medical Diagnosis</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            background-image: url('https://i.postimg.cc/dQ78wxwV/13437805-163800857.jpg');-->
+<!--            background-size: cover;-->
+<!--            background-position: center;-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-attachment: fixed;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button {-->
+<!--            font-size: 1em;-->
+<!--            color: #ff4d4d;-->
+<!--            background-color: transparent;-->
+<!--            padding: 10px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 10px;-->
+<!--            cursor: pointer;-->
+<!--            transition: color 0.3s ease, transform 0.2s ease;-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--            box-shadow: 0 0 10px #ff4d4d;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button::before {-->
+<!--            content: "";-->
+<!--            position: absolute;-->
+<!--            top: -2px;-->
+<!--            left: -2px;-->
+<!--            width: calc(100% + 4px);-->
+<!--            height: calc(100% + 4px);-->
+<!--            background: linear-gradient(45deg, #ff4d4d, #ff0000, #ff4d4d);-->
+<!--            border-radius: 10px;-->
+<!--            opacity: 0;-->
+<!--            transition: opacity 0.5s, transform 0.5s;-->
+<!--            z-index: -1;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button:hover::before {-->
+<!--            opacity: 1;-->
+<!--            transform: scale(1.05);-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button:hover {-->
+<!--            color: #fff;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button:focus {-->
+<!--            outline: none;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button:active {-->
+<!--            transform: scale(0.95);-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 *,-->
+<!--        .checkbox-wrapper-56 ::after,-->
+<!--        .checkbox-wrapper-56 ::before {-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container input {-->
+<!--            opacity: 1;-->
+<!--            -webkit-appearance: none;-->
+<!--            cursor: pointer;-->
+<!--            height: 30px;-->
+<!--            width: 30px;-->
+<!--            box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),-->
+<!--            10px 10px 15px rgba(0, 0, 70, 0.12);-->
+<!--            border-radius: 50%;-->
+<!--            border: 8px solid #ececec;-->
+<!--            outline: none;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            transition: .5s;-->
+<!--            margin-right: 10px;-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container input::after {-->
+<!--            transition: .5s;-->
+<!--            font-family: monospace;-->
+<!--            content: '';-->
+<!--            color: #7a7a7a;-->
+<!--            font-size: 20px;-->
+<!--            left: 0.45em;-->
+<!--            top: 0.25em;-->
+<!--            width: 0.25em;-->
+<!--            height: 0.5em;-->
+<!--            border: solid #7a7a7a;-->
+<!--            border-width: 0 0.15em 0.15em 0;-->
+<!--            transform: rotate(45deg);-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container input:checked {-->
+<!--            box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),-->
+<!--            10px 10px 15px rgba(70, 70, 70, 0.12),-->
+<!--            inset -10px -10px 15px rgba(255, 255, 255, 0.5),-->
+<!--            inset 10px 10px 15px rgba(70, 70, 70, 0.12);-->
+<!--            transition: .5s;-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container input:checked::after {-->
+<!--            transition: .5s;-->
+<!--            border: solid #ff4d4d;-->
+<!--            border-width: 0 0.15em 0.15em 0;-->
+<!--            transform: rotate(45deg);-->
+<!--        }-->
+
+<!--        /* Dropdown menu styles */-->
+<!--        .dropdown {-->
+<!--            position: relative;-->
+<!--            display: inline-block;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        .dropdown-button {-->
+<!--            font-size: 1em;-->
+<!--            color: #ff4d4d;-->
+<!--            background-color: transparent;-->
+<!--            padding: 10px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 10px;-->
+<!--            cursor: pointer;-->
+<!--            transition: color 0.3s ease, transform 0.2s ease;-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--            box-shadow: 0 0 10px #ff4d4d;-->
+<!--        }-->
+
+<!--        .dropdown-button::before {-->
+<!--            content: "";-->
+<!--            position: absolute;-->
+<!--            top: -2px;-->
+<!--            left: -2px;-->
+<!--            width: calc(100% + 4px);-->
+<!--            height: calc(100% + 4px);-->
+<!--            background: linear-gradient(45deg, #ff4d4d, #ff0000, #ff4d4d);-->
+<!--            border-radius: 10px;-->
+<!--            opacity: 0;-->
+<!--            transition: opacity 0.5s, transform 0.5s;-->
+<!--            z-index: -1;-->
+<!--        }-->
+
+<!--        .dropdown-button:hover::before {-->
+<!--            opacity: 1;-->
+<!--            transform: scale(1.05);-->
+<!--        }-->
+
+<!--        .dropdown-button:hover {-->
+<!--            color: #fff;-->
+<!--        }-->
+
+<!--        .dropdown-button:focus {-->
+<!--            outline: none;-->
+<!--        }-->
+
+<!--        .dropdown-button:active {-->
+<!--            transform: scale(0.95);-->
+<!--        }-->
+
+<!--        .dropdown-content {-->
+<!--            display: none;-->
+<!--            position: absolute;-->
+<!--            background-color: rgba(255, 255, 255, 0.9);-->
+<!--            min-width: 300px;-->
+<!--            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);-->
+<!--            z-index: 1;-->
+<!--            padding: 12px 16px;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 0 10px #ff4d4d;-->
+<!--        }-->
+
+<!--        .dropdown:hover .dropdown-content {-->
+<!--            display: block;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Select Your Symptoms</h1>-->
+<!--    <form action="/predict" method="post">-->
+<!--        <div class="dropdown">-->
+<!--            <button class="dropdown-button" type="button">Select Symptoms</button>-->
+<!--            <div class="dropdown-content">-->
+<!--                {% for symptom in symptoms %}-->
+<!--                    <div class="checkbox-wrapper-56">-->
+<!--                        <label class="container">-->
+<!--                            <input type="checkbox" id="{{ symptom }}" name="{{ symptom }}" value="1">-->
+<!--                            <span>{{ symptom.replace('_', ' ') }}</span>-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                {% endfor %}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <br>-->
+<!--        <button type="submit" class="submit-button">Submit</button>-->
+<!--    </form>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Medical Diagnosis</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            background-image: url('https://i.postimg.cc/dQ78wxwV/13437805-163800857.jpg');-->
+<!--            background-size: cover;-->
+<!--            background-position: center;-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-attachment: fixed;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            height: 100vh;-->
+<!--            flex-direction: column;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button {-->
+<!--            font-size: 1em;-->
+<!--            color: #ff4d4d;-->
+<!--            background-color: transparent;-->
+<!--            padding: 10px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 10px;-->
+<!--            cursor: pointer;-->
+<!--            transition: color 0.3s ease, transform 0.2s ease;-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--            box-shadow: 0 0 10px #ff4d4d;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button::before {-->
+<!--            content: "";-->
+<!--            position: absolute;-->
+<!--            top: -2px;-->
+<!--            left: -2px;-->
+<!--            width: calc(100% + 4px);-->
+<!--            height: calc(100% + 4px);-->
+<!--            background: linear-gradient(45deg, #ff4d4d, #ff0000, #ff4d4d);-->
+<!--            border-radius: 10px;-->
+<!--            opacity: 0;-->
+<!--            transition: opacity 0.5s, transform 0.5s;-->
+<!--            z-index: -1;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button:hover::before {-->
+<!--            opacity: 1;-->
+<!--            transform: scale(1.05);-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button:hover {-->
+<!--            color: #fff;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button:focus {-->
+<!--            outline: none;-->
+<!--        }-->
+
+<!--        button[type="submit"].submit-button:active {-->
+<!--            transform: scale(0.95);-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 *,-->
+<!--        .checkbox-wrapper-56 ::after,-->
+<!--        .checkbox-wrapper-56 ::before {-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container input {-->
+<!--            opacity: 1;-->
+<!--            -webkit-appearance: none;-->
+<!--            cursor: pointer;-->
+<!--            height: 30px;-->
+<!--            width: 30px;-->
+<!--            box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),-->
+<!--            10px 10px 15px rgba(0, 0, 70, 0.12);-->
+<!--            border-radius: 50%;-->
+<!--            border: 8px solid #ececec;-->
+<!--            outline: none;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            transition: .5s;-->
+<!--            margin-right: 10px;-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container input::after {-->
+<!--            transition: .5s;-->
+<!--            font-family: monospace;-->
+<!--            content: '';-->
+<!--            color: #7a7a7a;-->
+<!--            font-size: 20px;-->
+<!--            left: 0.45em;-->
+<!--            top: 0.25em;-->
+<!--            width: 0.25em;-->
+<!--            height: 0.5em;-->
+<!--            border: solid #7a7a7a;-->
+<!--            border-width: 0 0.15em 0.15em 0;-->
+<!--            transform: rotate(45deg);-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container input:checked {-->
+<!--            box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),-->
+<!--            10px 10px 15px rgba(70, 70, 70, 0.12),-->
+<!--            inset -10px -10px 15px rgba(255, 255, 255, 0.5),-->
+<!--            inset 10px 10px 15px rgba(70, 70, 70, 0.12);-->
+<!--            transition: .5s;-->
+<!--        }-->
+
+<!--        .checkbox-wrapper-56 .container input:checked::after {-->
+<!--            transition: .5s;-->
+<!--            border: solid #ff4d4d;-->
+<!--            border-width: 0 0.15em 0.15em 0;-->
+<!--            transform: rotate(45deg);-->
+<!--        }-->
+
+<!--        /* Dropdown menu styles */-->
+<!--        .dropdown {-->
+<!--            position: relative;-->
+<!--            display: inline-block;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        .dropdown-button {-->
+<!--            font-size: 1em;-->
+<!--            color: #ff4d4d;-->
+<!--            background-color: transparent;-->
+<!--            padding: 10px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 10px;-->
+<!--            cursor: pointer;-->
+<!--            transition: color 0.3s ease, transform 0.2s ease;-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--            box-shadow: 0 0 10px #ff4d4d;-->
+<!--        }-->
+
+<!--        .dropdown-button::before {-->
+<!--            content: "";-->
+<!--            position: absolute;-->
+<!--            top: -2px;-->
+<!--            left: -2px;-->
+<!--            width: calc(100% + 4px);-->
+<!--            height: calc(100% + 4px);-->
+<!--            background: linear-gradient(45deg, #ff4d4d, #ff0000, #ff4d4d);-->
+<!--            border-radius: 10px;-->
+<!--            opacity: 0;-->
+<!--            transition: opacity 0.5s, transform 0.5s;-->
+<!--            z-index: -1;-->
+<!--        }-->
+
+<!--        .dropdown-button:hover::before {-->
+<!--            opacity: 1;-->
+<!--            transform: scale(1.05);-->
+<!--        }-->
+
+<!--        .dropdown-button:hover {-->
+<!--            color: #fff;-->
+<!--        }-->
+
+<!--        .dropdown-button:focus {-->
+<!--            outline: none;-->
+<!--        }-->
+
+<!--        .dropdown-button:active {-->
+<!--            transform: scale(0.95);-->
+<!--        }-->
+
+<!--        .dropdown-content {-->
+<!--            display: none;-->
+<!--            position: absolute;-->
+<!--            background-color: rgba(255, 255, 255, 0.9);-->
+<!--            min-width: 300px;-->
+<!--            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);-->
+<!--            z-index: 1;-->
+<!--            padding: 12px 16px;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 0 10px #ff4d4d;-->
+<!--        }-->
+
+<!--        .dropdown:hover .dropdown-content {-->
+<!--            display: block;-->
+<!--        }-->
+
+<!--        .form-container {-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            width: 100%;-->
+<!--        }-->
+
+<!--        h1 {-->
+<!--            color: #fff;-->
+<!--            text-shadow: 2px 2px 4px #000;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="form-container">-->
+<!--        <h1>Select Your Symptoms</h1>-->
+<!--        <form action="/predict" method="post">-->
+<!--            <div class="dropdown">-->
+<!--                <button class="dropdown-button" type="button">Select Symptoms</button>-->
+<!--                <div class="dropdown-content">-->
+<!--                    {% for symptom in symptoms %}-->
+<!--                        <div class="checkbox-wrapper-56">-->
+<!--                            <label class="container">-->
+<!--                                <input type="checkbox" id="{{ symptom }}" name="{{ symptom }}" value="1">-->
+<!--                                <span>{{ symptom.replace('_', ' ') }}</span>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    {% endfor %}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <br>-->
+<!--            <button type="submit" class="submit-button">Submit</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Diagnosis</title>
+    <style>
+        body {
+            background-image: url('https://i.postimg.cc/dQ78wxwV/13437805-163800857.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        button[type="submit"].submit-button {
+            font-size: 1em;
+            color: #ff4d4d;
+            background-color: transparent;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px #ff4d4d;
+        }
+
+        button[type="submit"].submit-button::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            background: linear-gradient(45deg, #ff4d4d, #ff0000, #ff4d4d);
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+            z-index: -1;
+        }
+
+        button[type="submit"].submit-button:hover::before {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        button[type="submit"].submit-button:hover {
+            color: #fff;
+        }
+
+        button[type="submit"].submit-button:focus {
+            outline: none;
+        }
+
+        button[type="submit"].submit-button:active {
+            transform: scale(0.95);
+        }
+
+        .checkbox-wrapper-56 *,
+        .checkbox-wrapper-56 ::after,
+        .checkbox-wrapper-56 ::before {
+            box-sizing: border-box;
+        }
+
+        .checkbox-wrapper-56 .container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-wrapper-56 .container input {
+            opacity: 1;
+            -webkit-appearance: none;
+            cursor: pointer;
+            height: 30px;
+            width: 30px;
+            box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),
+            10px 10px 15px rgba(0, 0, 70, 0.12);
+            border-radius: 50%;
+            border: 8px solid #ececec;
+            outline: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: .5s;
+            margin-right: 10px;
+        }
+
+        .checkbox-wrapper-56 .container input::after {
+            transition: .5s;
+            font-family: monospace;
+            content: '';
+            color: #7a7a7a;
+            font-size: 20px;
+            left: 0.45em;
+            top: 0.25em;
+            width: 0.25em;
+            height: 0.5em;
+            border: solid #7a7a7a;
+            border-width: 0 0.15em 0.15em 0;
+            transform: rotate(45deg);
+        }
+
+        .checkbox-wrapper-56 .container input:checked {
+            box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),
+            10px 10px 15px rgba(70, 70, 70, 0.12),
+            inset -10px -10px 15px rgba(255, 255, 255, 0.5),
+            inset 10px 10px 15px rgba(70, 70, 70, 0.12);
+            transition: .5s;
+        }
+
+        .checkbox-wrapper-56 .container input:checked::after {
+            transition: .5s;
+            border: solid #ff4d4d;
+            border-width: 0 0.15em 0.15em 0;
+            transform: rotate(45deg);
+        }
+
+        /* Dropdown menu styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .dropdown-button {
+            font-size: 1em;
+            color: #ff4d4d;
+            background-color: transparent;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px #ff4d4d;
+        }
+
+        .dropdown-button::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            background: linear-gradient(45deg, #ff4d4d, #ff0000, #ff4d4d);
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+            z-index: -1;
+        }
+
+        .dropdown-button:hover::before {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .dropdown-button:hover {
+            color: #fff;
+        }
+
+        .dropdown-button:focus {
+            outline: none;
+        }
+
+        .dropdown-button:active {
+            transform: scale(0.95);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            min-width: 300px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 12px 16px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ff4d4d;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        h1 {
+            color: #fff;
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Select Your Symptoms</h1>
+        <form action="/predict" method="post">
+            <div class="dropdown">
+                <button class="dropdown-button" type="button">Select Symptoms</button>
+                <div class="dropdown-content">
+                    {% for symptom in symptoms %}
+                        <div class="checkbox-wrapper-56">
+                            <label class="container">
+                                <input type="checkbox" id="{{ symptom }}" name="{{ symptom }}" value="1">
+                                <span>{{ symptom.replace('_', ' ') }}</span>
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
